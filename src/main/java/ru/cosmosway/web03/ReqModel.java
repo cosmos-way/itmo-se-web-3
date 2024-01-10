@@ -19,7 +19,6 @@ public class ReqModel {
 
     private Req req = new Req();
 
-    // Метод для добавления Req
     @Transactional
     public void addReq() {
         if (req == null) req = new Req();
@@ -35,13 +34,10 @@ public class ReqModel {
         req.setY(Double.parseDouble(paramMap.get("y")));
         req.setR(Double.parseDouble(paramMap.get("r")));
 
-//            req.checkHit();
         em.persist(req);
         req = new Req();
     }
 
-
-    // Метод для получения всех Req
     public List<Req> getReqs() {
         TypedQuery<Req> query = em.createQuery("SELECT r FROM Req r", Req.class);
         return query.getResultList();
